@@ -10,25 +10,23 @@ function populateData() {
     localStorage.setItem("data", JSON.stringify(Stored_Value));
   }
 }
-
 function data() {
   var name = document.getElementById("name").value;
-  var type = document.getElementById("dropdownDividerButton").innerHTML;
+  var type = document.getElementById("Wcon").innerHTML;
+  console.log(type);
   const Minute = document.getElementById("time").value;
   names = JSON.stringify(name);
   types = JSON.stringify(type);
   Minutes = parseInt(Minute);
-  console.log(names, types, Minutes);
-  userpara(names, type, Minutes);
+  console.log(names, Minutes);
+  userpara(name, type, Minutes);
 }
 
 function userpara(Name, WType, Min) {
   a = [Name, WType, Min];
-  console.log(WType);
-  Emessage = document.getElementById("dropdownDividerButton").innerHTML;
   let retString = localStorage.getItem("data");
   let user_data = JSON.parse(retString);
-  if (a[1] == Emessage) {
+  if (a[1] == "Add Workout") {
     document.getElementById("EMessages").innerHTML =
       "<p>Please choose an excercise</p>";
   } else {
@@ -37,14 +35,15 @@ function userpara(Name, WType, Min) {
       if (Person[0] == Name) {
         Workout = Person[1].split(",");
         var p = 0;
-        for (let j = 0; j < Workout.length; j++) {
-          console.log(Workout[j]);
+        for (let j = 0; j <= Workout.length + 1; j++) {
+          console.log(Workout[j], WType);
           if (JSON.stringify(Workout[j]) == JSON.stringify(WType)) {
             Person[2] = Person[2] + Min;
             Min = 0;
             break;
           } else if (JSON.stringify(Workout[j]) != JSON.stringify(WType)) {
-            p += 1;
+            p = p + 1;
+            console.log(p);
           } else if (p == Workout.length) {
             Person[1] = Person[1] + "," + WType;
             Person[2] = Person[2] + Min;
@@ -58,7 +57,7 @@ function userpara(Name, WType, Min) {
         break;
       }
     }
-
+    document.getElementById("EMessages").innerHTML = "";
     string = JSON.stringify(user_data);
     localStorage.setItem("data", string);
     console.log(user_data);

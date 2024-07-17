@@ -19,10 +19,9 @@ function toggleDrop(drop) {
     '<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6" > <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" /> </svg>';
   no = drop;
   if (no == drop) {
-    document.getElementById("dropdownDividerButton").innerHTML = no;
+    document.getElementById("Wcon").innerHTML = no;
   } else {
-    document.getElementById("dropdownDividerButton").innerHTML =
-      "Add Workout" + svgarrow;
+    document.getElementById("Wcon").innerHTML = "Add Workout" + svgarrow;
   }
 }
 var Start = JSON.parse(localStorage.getItem("data")).length;
