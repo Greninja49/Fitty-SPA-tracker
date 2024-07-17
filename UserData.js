@@ -34,6 +34,7 @@ function userpara(Name, WType, Min) {
       Person = user_data[i];
       if (Person[0] == Name) {
         Workout = Person[1].split(",");
+        console.log(Workout.length);
         var p = 0;
         for (let j = 0; j <= Workout.length + 1; j++) {
           console.log(Workout[j], WType);
@@ -41,14 +42,14 @@ function userpara(Name, WType, Min) {
             Person[2] = Person[2] + Min;
             Min = 0;
             break;
-          } else if (JSON.stringify(Workout[j]) != JSON.stringify(WType)) {
-            p = p + 1;
-            console.log(p);
-          } else if (p == Workout.length) {
+          } else if (p == Workout.length || Workout.length == 1) {
             Person[1] = Person[1] + "," + WType;
             Person[2] = Person[2] + Min;
             Min = 0;
             break;
+          } else if (JSON.stringify(Workout[j]) != JSON.stringify(WType)) {
+            p = p + 1;
+            console.log(p);
           }
         }
         break;
